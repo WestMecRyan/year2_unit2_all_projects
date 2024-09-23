@@ -1,5 +1,5 @@
 // Dummy user data
-const users = [
+const users2 = [
   { id: 1, name: "Alice Johnson", email: "alice@email.com", age: 28, city: "New York", messages: ["Hello", "How are you?"] },
   { id: 2, name: "Bob Smith", email: "bob@email.com", age: 35, city: "Los Angeles", messages: ["What's up?"] },
   { id: 3, name: "Charlie Brown", email: "charlie@email.com", age: 22, city: "Chicago", messages: [] },
@@ -9,12 +9,32 @@ const users = [
   { id: 7, name: "George Clooney", email: "george@email.com", age: 55, city: "New York", messages: ["How's it going?", "See you soon"] },
 ];
 
-// Find a user by their name
+// 6. Get all users with no messages
+function getUsersWithNoMessages() {
+  // Your code here
+}
 
-// Find a user by their id
+// 7. Get the average age of all users
+function getAverageUserAge() {
+  // Your code here
+}
 
-// filter users who live in New York
+// 8. Find the user with the most messages
+function getUserWithMostMessages() {
+  // Your code here
+}
 
-// filter users whose messages array contains the message "Hello"
+// 9. Remove a specific message from a user
+function removeMessageFromUser(userId, message) {
+  // Your code here
+}
 
-// map a new array where all users' ages are increased by 10
+// 10. Sort users by age (youngest to oldest)
+function sortUsersByAge() {
+  // Your code here
+}
+
+// Test your functions here
+// console.log(findUserById(3));
+// console.log(filterUsersByCity("New York"));
+// ... add more test calls for other functions
