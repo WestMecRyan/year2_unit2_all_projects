@@ -92,6 +92,18 @@
           e.preventDefault();
           const name = document.getElementById("delete-name").value;
           const email = document.getElementById("delete-email").value;
+          try {
+            const response = await fetch(`/user/${name}/${email}`, {
+              method: "DELETE",
+            });
+            if (!response.ok) {
+              throw new Error("Error with network");
+            }
+            const data = await response.text();
+            console.log(data);
+          } catch (error) {
+            console.error("something went wrong" + error.message);
+          }
         });
 
       async function fetchUsers() {
