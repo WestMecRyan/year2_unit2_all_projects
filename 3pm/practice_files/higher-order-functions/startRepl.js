@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 
 // List of scripts to watch and load
-const scripts = ['./user-data-manipulation-practice-advanced.js', './user-data-manipulation-practice-basic.js', 'test.js'];
+const scripts = ['./user-data-manipulation-practice-advanced.js', './user-data-manipulation-practice-basic.js', 'test.js', 'bubble-sort-example.js'];
 
 // Function to load and expose module.exports to the REPL context
 const loadFunctions = (context) => {
