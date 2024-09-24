@@ -30,11 +30,15 @@ function removeMessageFromUser(userId, message) {
 }
 
 // 10. Sort users by age (youngest to oldest)
-function sortUsersByAge() {
+function sortUsersByAge(arr) {
   // Your code here
-  console.log('sort by age');
+  return [...arr].sort((a, b) => { return a.age - b.age });
 }
-module.exports = { sortUsersByAge }
+function sortArrByKey(arr, key) {
+  // Your code here
+  return [...arr].sort((a, b) => { return a[key] - b[key] });
+}
+module.exports = { users2, sortUsersByAge, sortArrByKey }
 // Test your functions here
 // console.log(findUserById(3));
 // console.log(filterUsersByCity("New York"));

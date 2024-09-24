@@ -5,5 +5,12 @@
     "messages": [
       "a"
     ]
+  },
+  {
+    "name": "c",
+    "email": "c@c.com",
+    "messages": [
+      "wassup"
+    ]
   }
 ]
