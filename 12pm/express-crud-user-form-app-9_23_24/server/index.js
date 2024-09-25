@@ -105,8 +105,37 @@ app.put('/update-user/:currentName/:currentEmail', async (req, res) => {
 });
 app.delete('/user/:name/:email', async (req, res) => {
     try {
-        
-    } catch (error) { }
+        // console.log req.params
+        console.log(req.params);
+        // then cache returned name and email
+        // as destructured variables from params
+        console.log(req.params.name);
+        console.log(req.params.email);
+        const { name, email } = req.params
+        // initalize an empty array of 'users'
+        const users = [];
+        // try to read the users.json file and cache as data
+        try {
+            const data = await fs.readFile(dataPath, 'utf8');
+            users = JSON.parse(data);
+        } catch (error) {
+            return res.status(404).send('User data not found')
+        }
+        // cache the userIndex based on a matching name and email
+        const userIndex = users.findIndex(user => user.name === name && user.email === email);
+        // console.log(userIndex);
+        if (userIndex === -1) {
+            return res.status(404).send('User not found');
+        }
+        // splice the users array with the intended delete name and email
+        users.splice(userIndex, 1);
+
+        await fs.writeFile(dataPath, JSON.stringify(users, null, 2));
+        // send a success deleted message
+        res.send('User deleted successfully');
+    } catch (error) {
+        res.status(500).send('There was an error deleting user');
+    }
 });
 // Start the server
 const PORT = process.env.PORT || 3000;
