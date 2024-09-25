@@ -103,7 +103,11 @@ app.put('/update-user/:currentName/:currentEmail', async (req, res) => {
         res.status(500).send('An error occurred while updating the user.');
     }
 });
-
+app.delete('/user/:name/:email', async (req, res) => {
+    try {
+        
+    } catch (error) { }
+});
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
