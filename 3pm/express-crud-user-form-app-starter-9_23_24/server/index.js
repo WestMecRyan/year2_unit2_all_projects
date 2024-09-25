@@ -104,6 +104,26 @@ app.put('/update-user/:currentName/:currentEmail', async (req, res) => {
     }
 });
 
+app.delete('/user/:name/:email', async (req, res) => {
+    try {
+        // console.log req.params
+        // then cache returned name and email
+        // as destructured variables from params
+
+        // initalize an empty array of 'users'
+
+        // try to read the users.json file and cache as data
+
+        // parse the data
+
+        // cache the userIndex based on a matching name and email
+
+        // splice the users array with the intended delete name and email
+
+        // send a success deleted message
+    } catch (error) { }
+});
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
