@@ -113,7 +113,7 @@ app.delete('/user/:name/:email', async (req, res) => {
         console.log(req.params.email);
         const { name, email } = req.params
         // initalize an empty array of 'users'
-        const users = [];
+        let users = [];
         // try to read the users.json file and cache as data
         try {
             const data = await fs.readFile(dataPath, 'utf8');
@@ -123,7 +123,7 @@ app.delete('/user/:name/:email', async (req, res) => {
         }
         // cache the userIndex based on a matching name and email
         const userIndex = users.findIndex(user => user.name === name && user.email === email);
-        // console.log(userIndex);
+        console.log(userIndex);
         if (userIndex === -1) {
             return res.status(404).send('User not found');
         }
