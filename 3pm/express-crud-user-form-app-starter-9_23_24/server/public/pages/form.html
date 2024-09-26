@@ -101,7 +101,8 @@
               throw new Error("Problem fetching delete endpoint");
             }
             const data = await response.text();
-            console.log(data);
+            // console.log(data);
+            renderUsers();
           } catch (error) {
             console.error(
               "there was a problem, skill issue" +

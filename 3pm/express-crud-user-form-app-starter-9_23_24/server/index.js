@@ -120,14 +120,24 @@ app.delete('/user/:name/:email', async (req, res) => {
         // cache the userIndex based on a matching name and email
         const userIndex = users.findIndex(user => user.name === name && user.email === email);
         // handle a situation where the index does NOT exist
+        if (userIndex === -1) {
+            return res.status(404).send('User not found');
+        }
         // splice the users array with the intended delete name and email
         users.splice(userIndex, 1);
         console.log(userIndex);
         console.log(users);
         // try to write the users array back to the file
-        return res.send('successfully deleted user');
+        try {
+            await fs.writeFile(dataPath, JSON.stringify(users, null, 2));
+        } catch (error) {
+            console.error('Failed to write to database');
+        }
+        res.send('successfully deleted user');
         // send a success deleted message
-    } catch (error) { }
+    } catch (error) {
+        res.status(500).send("There was a problem");
+    }
 });
 
 // Start the server
