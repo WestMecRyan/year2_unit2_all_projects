@@ -106,11 +106,11 @@ app.put('/update-user/:currentName/:currentEmail', async (req, res) => {
 app.delete('/user/:name/:email', async (req, res) => {
     try {
         // console.log req.params
-        console.log(req.params);
+        // console.log(req.params);
         // then cache returned name and email
         // as destructured variables from params
-        console.log(req.params.name);
-        console.log(req.params.email);
+        // console.log(req.params.name);
+        // console.log(req.params.email);
         const { name, email } = req.params
         // initalize an empty array of 'users'
         let users = [];
@@ -129,8 +129,11 @@ app.delete('/user/:name/:email', async (req, res) => {
         }
         // splice the users array with the intended delete name and email
         users.splice(userIndex, 1);
-
-        await fs.writeFile(dataPath, JSON.stringify(users, null, 2));
+        try {
+            await fs.writeFile(dataPath, JSON.stringify(users, null, 2));
+        } catch (error) {
+            console.error("Failed to write to database");
+        }
         // send a success deleted message
         res.send('User deleted successfully');
     } catch (error) {

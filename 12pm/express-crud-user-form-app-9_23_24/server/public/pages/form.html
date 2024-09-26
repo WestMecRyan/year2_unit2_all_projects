@@ -100,7 +100,8 @@
               throw new Error("Error with network");
             }
             const data = await response.text();
-            console.log(data);
+            // console.log(data);
+            renderUsers();
           } catch (error) {
             console.error("something went wrong" + error.message);
           }
