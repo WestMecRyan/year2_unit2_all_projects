@@ -106,20 +106,26 @@ app.put('/update-user/:currentName/:currentEmail', async (req, res) => {
 
 app.delete('/user/:name/:email', async (req, res) => {
     try {
-        // console.log req.params
-        // then cache returned name and email
-        // as destructured variables from params
-
+        const { name, email } = req.params;
         // initalize an empty array of 'users'
-
+        let users = [];
         // try to read the users.json file and cache as data
-
-        // parse the data
-
+        try {
+            const data = await fs.readFile(dataPath, 'utf8');
+            // parse the data
+            users = JSON.parse(data);
+        } catch (error) {
+            return res.status(404).send('File data not found');
+        }
         // cache the userIndex based on a matching name and email
-
+        const userIndex = users.findIndex(user => user.name === name && user.email === email);
+        // handle a situation where the index does NOT exist
         // splice the users array with the intended delete name and email
-
+        users.splice(userIndex, 1);
+        console.log(userIndex);
+        console.log(users);
+        // try to write the users array back to the file
+        return res.send('successfully deleted user');
         // send a success deleted message
     } catch (error) { }
 });

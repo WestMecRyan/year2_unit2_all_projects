@@ -40,9 +40,9 @@
     <h2>Delete User</h2>
     <form id="delete-user">
       <label for="delete-name">name:</label>
-      <input type="text" id="delete-name" />
+      <input type="text" id="delete-name" /><br /><br />
       <label for="delete-email">email:</label>
-      <input type="text" id="delete-email" />
+      <input type="text" id="delete-email" /><br /><br />
       <button type="submit">Delete User</button>
     </form>
 
@@ -98,12 +98,16 @@
               method: "DELETE",
             });
             if (!response.ok) {
-               throw new Error("Problem fetching delete endpoint");
+              throw new Error("Problem fetching delete endpoint");
             }
             const data = await response.text();
             console.log(data);
           } catch (error) {
-            console.error("there was a problem, skill issue" + error.message + "GG bro. Keep mogging.");
+            console.error(
+              "there was a problem, skill issue" +
+                error.message +
+                "GG bro. Keep mogging."
+            );
           }
         });
 
